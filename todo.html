@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <style>
+        *{ font-family: 'Times New Roman', Times, serif;
+            border-radius: 2px;
+        }
+        body{
+            color: whitesmoke;
+            background-color: black;
+        }
+        button{
+            cursor: pointer;
+            background-color: blue;
+            height: 38px;
+            width: 50px;
+            color: whitesmoke;
+            font-size: large;
+
+        }
+        .container{
+            overflow: hidden;
+            font-size: 20px;
+            margin: 10px 10px;
+            padding: 5px ;
+            text-align: center;
+            justify-content: center;
+            border: 1px solid white;
+            height: 750px;
+        }
+        .text ul{
+            overflow: hidden;
+            background-color: yellow;
+            color: red;
+            font-size: 25px;
+            text-align: left;
+            padding: 7px;
+            margin: 20px 20px;
+        }
+        .text ul i{
+            overflow: hidden;
+            position: absolute;
+            right: 55px;
+            cursor: pointer;
+        }
+        input{
+            display: inline;
+            font-size: 19px;
+            height: 32px;
+            width: 250px;
+            overflow: hidden;
+        }
+        text{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+         <h1>To Do list</h1> <br>
+    <div class="inputs">
+        <input type="text" placeholder="enter new task" id="inp">
+        <button onclick="Add()">Add</button>
+    </div>
+    <div class="text">
+
+    </div>
+    </div>
+    <script>
+        let inputs = document.getElementById("inp");
+        let text =document.querySelector(".text");
+
+        function Add(){
+            if (inputs.value == ""){
+                alert("please enter task")
+            }else{
+                let newele= document.createElement("ul");
+                newele.innerHTML =`${inputs.value}<i class="material-icons">delete</i>`;
+                text.appendChild(newele);
+                inputs.value="";
+                newele.querySelector("i").addEventListener("click", remove);
+                function remove(){
+                    newele.remove()
+                }
+            }
+        }
+    </script>
+</body>
+</html>
